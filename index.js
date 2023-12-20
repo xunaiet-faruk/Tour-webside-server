@@ -32,6 +32,7 @@ async function run() {
 
         //All-Collection here
         const ToursCollection =client.db("toursDB").collection("tours")
+        const featuresCollection = client.db("toursDB").collection("featurs")
         const shopCollection =client.db("shopDB").collection("shop")
 
 
@@ -44,6 +45,11 @@ async function run() {
             const result =await shopCollection.find().toArray()
             res.send(result)
          })
+
+        app.get('/featurs',async(req,res)=>{
+            const result =await featuresCollection.find().toArray()
+            res.send(result)
+        })
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
